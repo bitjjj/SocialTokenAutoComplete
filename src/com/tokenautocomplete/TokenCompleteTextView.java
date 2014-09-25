@@ -48,6 +48,7 @@ import java.util.List;
  * Created by mgod on 9/12/13.
  *
  * @author mgod
+ * @author bitjjj
  */
 public abstract class TokenCompleteTextView extends MultiAutoCompleteTextView implements TextView.OnEditorActionListener {
     //When the token is deleted...
@@ -90,6 +91,8 @@ public abstract class TokenCompleteTextView extends MultiAutoCompleteTextView im
     private boolean savingState = false;
     private boolean shouldFocusNext = false;
     private boolean allowCollapse = true;
+    private final char SPLITOR = 'д';
+    
 
     private void resetListeners() {
         //reset listeners that get discarded when you set text
@@ -121,7 +124,7 @@ public abstract class TokenCompleteTextView extends MultiAutoCompleteTextView im
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                 //Detect single commas, remove them and complete the current token instead
-                if (source.length() == 1 && source.charAt(0) == ',') {
+                if (source.length() == 1 && source.charAt(0) == SPLITOR) {
                     performCompletion();
                     return "";
                 }
@@ -570,7 +573,7 @@ public abstract class TokenCompleteTextView extends MultiAutoCompleteTextView im
     private SpannableStringBuilder buildSpannableForText(CharSequence text) {
         //Add a sentinel , at the beginning so the user can remove an inner token and keep auto-completing
         //This is a hack to work around the fact that the tokenizer cannot directly detect spans
-        return new SpannableStringBuilder("," + tokenizer.terminateToken(text));
+        return new SpannableStringBuilder(SPLITOR + "" + tokenizer.terminateToken(text));
     }
 
     protected TokenImageSpan buildSpanForObject(Object obj) {
@@ -1004,11 +1007,11 @@ public abstract class TokenCompleteTextView extends MultiAutoCompleteTextView im
                     //The end of the span is the character index after it
                     spanEnd--;
 
-                    if (spanEnd >= 0 && text.charAt(spanEnd) == ',') {
+                    if (spanEnd >= 0 && text.charAt(spanEnd) == SPLITOR) {
                         text.delete(spanEnd, spanEnd + 1);
                     }
 
-                    if (spanStart > 0 && text.charAt(spanStart) == ',') {
+                    if (spanStart > 0 && text.charAt(spanStart) == SPLITOR) {
                         text.delete(spanStart, spanStart + 1);
                     }
                 }

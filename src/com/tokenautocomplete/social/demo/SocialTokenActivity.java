@@ -64,9 +64,9 @@ public class SocialTokenActivity extends Activity {
         completionView.setAdapter(adapter);
 
         if (savedInstanceState == null) {
-            completionView.setPrefix("To: ");
-            completionView.addObject(people[0]);
-            completionView.addObject(people[1]);
+            //completionView.setPrefix("To: ");
+            //completionView.addObject(people[0]);
+            //completionView.addObject(people[1]);
         }
 
       
