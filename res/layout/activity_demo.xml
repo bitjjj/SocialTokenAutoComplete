@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   
+	 <com.tokenautocomplete.social.SocialContactsCompletionView
+        android:layout_alignParentTop="true"
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Using @ for adding your friends"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="19sp"
+        android:nextFocusDown="@+id/editText"/>
+	
+</RelativeLayout>

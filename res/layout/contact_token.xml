@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+    
+   <TextView
+       android:id="@+id/name_token"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/token_background"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="4dp"/>
+    
+   <ImageView 
+        android:id="@+id/icon_image_token"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:paddingLeft="5dp"
+        android:scaleType="centerCrop" />
+
+   
+    
+</LinearLayout>
+
